@@ -43,12 +43,12 @@
     .day b { font-size:14px; font-weight:700; }
     .day:hover, .day.active { background:var(--red); border-color:var(--red); color:#fff; transform:translateY(-2px); }
     .day.active span { color:#f3d394; }
-    .plan { display:grid; grid-template-columns:132px 1fr; border-top:1px solid var(--line); min-height:300px; }
+    .plan { display:grid; grid-template-columns:132px 1fr 320px; border-top:1px solid var(--line); min-height:300px; }
     .date { padding:25px 18px 0 0; font:700 12px/1.6 "Noto Sans SC","Microsoft YaHei",sans-serif; color:var(--red); letter-spacing:.06em; }
     .plan-body { padding:23px 0 38px 31px; border-left:1px solid var(--line); position:relative; }
     .plan-body:before { content:""; position:absolute; width:11px; height:11px; border:2px solid var(--red); border-radius:50%; background:var(--paper); left:-7px; top:28px; }
     .plan-title { font-size:28px; margin:0 0 9px; font-weight:500; }
-    .plan-body p { max-width:720px; color:#50606d; font:15px/1.9 "Noto Sans SC","Microsoft YaHei",sans-serif; margin:0 0 16px; }
+    .plan-body p { max-width:720px; color:#50606d; font:15px/1.9 "Noto Sans SC","Microsoft YaHei",sans-serif; margin:0 0 16px; } .plan-image { width:100%; height:230px; object-fit:cover; align-self:center; border-radius:1px; filter:saturate(.86) contrast(.97); }
     .tags { display:flex; flex-wrap:wrap; gap:8px; }
     .tag { border:1px solid #d8c8ad; color:#76613f; padding:6px 10px; background:#f9f4ea; font:12px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; }
     .two-col { display:grid; grid-template-columns:1fr 1fr; gap:26px; padding:79px 0; border-top:1px solid var(--line); }
@@ -70,7 +70,7 @@
     .footer p { color:var(--muted); font:13px/1.8 "Noto Sans SC","Microsoft YaHei",sans-serif; margin:16px 0 0; }
     .seal { color:var(--red); font:700 13px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; letter-spacing:.15em; }
     @media(max-width:760px) { nav { padding:20px 22px; } .nav-links { display:none; } .hero { min-height:620px; padding:0 26px 67px; background-position:60% center; } .intro,.two-col,.food-grid { grid-template-columns:1fr; gap:30px; } .intro { padding:65px 0 57px; } .flight { grid-template-columns:1fr; gap:11px; } .arrow { display:none; } .days { grid-template-columns:repeat(2,1fr); } .plan { grid-template-columns:88px 1fr; } .plan-body { padding-left:20px; } .plan-title { font-size:23px; } .food { margin:0 -28px; } .food-grid { gap:26px; } .footer { display:block; } }
-  </style>
+  .plan-image{display:block;} @media(max-width:760px){.plan-image{grid-column:2;height:190px;margin:0 0 24px;}} </style>
 </head>
 <body>
   <header class="hero" id="top">
@@ -109,8 +109,8 @@
       ['11.22 周日','圆明园或备选日','可游圆明园，或作为长城天气备选日。若喜欢主题乐园，也可将全天改为环球度假区。','圆明园','弹性安排','告别晚餐'],
       ['11.23 周一','返程日','早餐后收拾行李并退房。建议中午前后离开酒店，约14:00前抵达北京大兴机场。','酒店退房','北京大兴机场','17:05 起飞']
     ];
-    const tabs=document.getElementById('dayTabs'), plan=document.getElementById('plan');
-    function render(i){const d=days[i]; document.querySelectorAll('.day').forEach((el,n)=>el.classList.toggle('active',n===i)); plan.innerHTML=`<div class="date">${d[0]}</div><div class="plan-body"><h3 class="plan-title">${d[1]}</h3><p>${d[2]}</p><div class="tags">${d.slice(3).map(x=>`<span class="tag">${x}</span>`).join('')}</div></div>`;}
+    const dayImages=['day01-arrival.png','day02-temple.png','day03-great-wall.png','day04-forbidden-city.png','day05-summer-palace.png','day06-hutong.png','day07-national-museum.png','day08-shichahai.png','day09-yuanmingyuan.png','day10-departure.png']; const tabs=document.getElementById('dayTabs'), plan=document.getElementById('plan');
+    function render(i){const d=days[i]; document.querySelectorAll('.day').forEach((el,n)=>el.classList.toggle('active',n===i)); plan.innerHTML=`<div class="date">${d[0]}</div><div class="plan-body"><h3 class="plan-title">${d[1]}</h3><p>${d[2]}</p><div class="tags">${d.slice(3).map(x=>`<span class="tag">${x}</span>`).join('')}</div></div><img class="plan-image" src="assets/${dayImages[i]}" alt="${d[1]}的北京旅行风景">`;}
     days.forEach((d,i)=>{let b=document.createElement('button');b.className='day'+(i===0?' active':'');b.innerHTML=`<span>${d[0]}</span><b>第 ${i+1} 天</b>`;b.onclick=()=>render(i);tabs.appendChild(b)});render(0);
   </script>
 </body>
