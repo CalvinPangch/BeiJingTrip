@@ -1,139 +1,547 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="2026年11月14日至23日北京十日漫游行程。" />
-  <title>北京秋日漫游｜十日旅行计划</title>
-  <style>
-    :root { --ink:#13283b; --paper:#f6f0e5; --sand:#e9d3ad; --red:#a7372d; --gold:#c78d35; --muted:#6f7170; --line:rgba(19,40,59,.15); }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--paper); color:var(--ink); font-family:"Noto Serif SC","Songti SC","STSong",serif; }
-    a { color:inherit; text-decoration:none; }
-    .serif { font-family:"Noto Serif SC","Songti SC",serif; }
-    .sans { font-family:"Noto Sans SC","Microsoft YaHei",Arial,sans-serif; }
-    nav { position:absolute; inset:0 0 auto; z-index:3; display:flex; align-items:center; justify-content:space-between; padding:25px clamp(22px,5vw,76px); color:#fff; font-family:"Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .brand { letter-spacing:.18em; font-size:14px; font-weight:700; }
-    .nav-links { display:flex; gap:26px; font-size:14px; }
-    .hero { min-height:715px; position:relative; isolation:isolate; color:#fff; display:grid; align-items:end; padding:0 clamp(22px,8vw,140px) 86px; background:linear-gradient(90deg,rgba(7,20,33,.86) 0%,rgba(10,27,43,.53) 42%,rgba(7,20,33,.1) 75%),url('assets/beijing-hero.png') center/cover; }
-    .hero:after { content:""; position:absolute; inset:auto 0 0; height:170px; background:linear-gradient(transparent,var(--paper)); z-index:-1; }
-    .eyebrow { display:flex; align-items:center; gap:11px; font:700 12px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; letter-spacing:.17em; color:#f2d195; }
-    .eyebrow:before { content:""; height:1px; width:42px; background:#f2d195; }
-    h1 { font-weight:500; font-size:clamp(45px,7vw,94px); line-height:1.05; letter-spacing:.07em; margin:21px 0 18px; text-shadow:0 2px 22px rgba(0,0,0,.18); }
-    .hero p { max-width:495px; margin:0; font:400 16px/1.8 "Noto Sans SC","Microsoft YaHei",sans-serif; color:rgba(255,255,255,.89); }
-    .trip-chip { margin-top:30px; display:inline-flex; align-items:center; gap:13px; border:1px solid rgba(255,255,255,.46); padding:13px 17px; font:13px/1.2 "Noto Sans SC","Microsoft YaHei",sans-serif; background:rgba(12,30,45,.18); backdrop-filter:blur(6px); }
-    .trip-chip b { color:#f3d394; letter-spacing:.1em; }
-    main { max-width:1180px; padding:0 28px; margin:auto; }
-    .intro { display:grid; grid-template-columns:1.15fr .85fr; gap:90px; padding:84px 0 75px; }
-    .chapter { font:700 12px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; letter-spacing:.17em; color:var(--red); }
-    h2 { font-size:clamp(29px,4vw,49px); font-weight:500; line-height:1.25; margin:16px 0 0; letter-spacing:.03em; }
-    .intro-copy { align-self:end; font:16px/2 "Noto Sans SC","Microsoft YaHei",sans-serif; color:#485765; margin:0; }
-    .flight { background:var(--ink); color:#fff; padding:29px 32px; display:grid; grid-template-columns:1fr auto 1fr; gap:20px; align-items:center; box-shadow:0 12px 35px rgba(17,39,58,.13); }
-    .flight .label { color:#e5bd77; font:700 11px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; letter-spacing:.16em; }
-    .flight strong { display:block; font:500 20px/1.4 "Noto Sans SC","Microsoft YaHei",sans-serif; margin:7px 0 5px; }
-    .flight small { font:12px/1.5 "Noto Sans SC","Microsoft YaHei",sans-serif; color:#b5c2cb; }
-    .arrow { color:#e5bd77; font-size:26px; }
-    .schedule { padding:32px 0 97px; }
-    .section-head { display:flex; align-items:end; justify-content:space-between; margin-bottom:26px; }
-    .section-head p { margin:0; color:var(--muted); font:13px/1.7 "Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .days { display:grid; grid-template-columns:repeat(5,1fr); gap:9px; margin:0 0 24px; }
-    .day { padding:13px 10px; background:transparent; border:1px solid var(--line); cursor:pointer; color:var(--ink); font-family:"Noto Sans SC","Microsoft YaHei",sans-serif; text-align:left; transition:.2s ease; }
-    .day span { display:block; font-size:11px; color:var(--muted); margin-bottom:4px; }
-    .day b { font-size:14px; font-weight:700; }
-    .day:hover, .day.active { background:var(--red); border-color:var(--red); color:#fff; transform:translateY(-2px); }
-    .day.active span { color:#f3d394; }
-    .plan { display:grid; grid-template-columns:132px 1fr 320px; border-top:1px solid var(--line); min-height:300px; }
-    .date { padding:25px 18px 0 0; font:700 12px/1.6 "Noto Sans SC","Microsoft YaHei",sans-serif; color:var(--red); letter-spacing:.06em; }
-    .plan-body { padding:23px 0 38px 31px; border-left:1px solid var(--line); position:relative; }
-    .plan-body:before { content:""; position:absolute; width:11px; height:11px; border:2px solid var(--red); border-radius:50%; background:var(--paper); left:-7px; top:28px; }
-    .plan-title { font-size:28px; margin:0 0 9px; font-weight:500; }
-    .plan-body p { max-width:720px; color:#50606d; font:15px/1.9 "Noto Sans SC","Microsoft YaHei",sans-serif; margin:0 0 16px; } .plan-image { width:100%; height:230px; object-fit:cover; align-self:center; border-radius:1px; filter:saturate(.86) contrast(.97); }
-    .tags { display:flex; flex-wrap:wrap; gap:8px; }
-    .tag { border:1px solid #d8c8ad; color:#76613f; padding:6px 10px; background:#f9f4ea; font:12px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:26px; padding:79px 0; border-top:1px solid var(--line); }
-    .card { background:#fffaf0; padding:37px; border-top:3px solid var(--gold); }
-    .card h3 { margin:0 0 19px; font-size:25px; font-weight:500; }
-    .card ul { padding:0; margin:0; list-style:none; }
-    .card li { padding:12px 0; border-bottom:1px solid #eee3d0; font:14px/1.7 "Noto Sans SC","Microsoft YaHei",sans-serif; color:#455664; }
-    .card li:last-child { border:0; }
-    .card li:before { content:"◆"; color:var(--red); font-size:8px; margin-right:10px; vertical-align:2px; }
-    .food { background:var(--red); color:#fff8e9; padding:49px clamp(25px,6vw,75px); margin:0 -28px; }
-    .food-grid { max-width:1124px; margin:auto; display:grid; grid-template-columns:.9fr 1.1fr; gap:60px; align-items:center; }
-    .food h2 { margin-top:13px; }
-    .food p { font:15px/1.95 "Noto Sans SC","Microsoft YaHei",sans-serif; color:rgba(255,248,233,.84); }
-    .food-items { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(255,255,255,.24); }
-    .food-item { background:#9b3027; padding:21px; min-height:116px; }
-    .food-item b { display:block; font-size:17px; font-weight:500; margin-bottom:8px; }
-    .food-item span { color:#f1d6a5; font:12px/1.5 "Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .footer { padding:73px 0 45px; display:flex; justify-content:space-between; align-items:end; }
-    .footer p { color:var(--muted); font:13px/1.8 "Noto Sans SC","Microsoft YaHei",sans-serif; margin:16px 0 0; }
-    .seal { color:var(--red); font:700 13px/1 "Noto Sans SC","Microsoft YaHei",sans-serif; letter-spacing:.15em; }
-    @media(max-width:760px) { nav { padding:20px 22px; } .nav-links { display:none; } .hero { min-height:620px; padding:0 26px 67px; background-position:60% center; } .intro,.two-col,.food-grid { grid-template-columns:1fr; gap:30px; } .intro { padding:65px 0 57px; } .flight { grid-template-columns:1fr; gap:11px; } .arrow { display:none; } .days { grid-template-columns:repeat(2,1fr); } .plan { grid-template-columns:88px 1fr; } .plan-body { padding-left:20px; } .plan-title { font-size:23px; } .food { margin:0 -28px; } .food-grid { gap:26px; } .footer { display:block; } }
-  .plan-image{display:block;} @media(max-width:760px){.plan-image{grid-column:2;height:190px;margin:0 0 24px;}}     .care { padding:82px 0 22px; border-top:1px solid var(--line); }
-    .care-head { display:flex; align-items:end; justify-content:space-between; margin-bottom:28px; }
-    .care-head p { margin:0; color:var(--muted); font:13px/1.7 "Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .care-grid { display:grid; grid-template-columns:1.12fr 1fr 1fr; gap:14px; }
-    .care-card { min-height:260px; padding:28px; background:#eef0eb; position:relative; overflow:hidden; }
-    .care-card:nth-child(2) { background:#f3e7cf; }
-    .care-card:nth-child(3) { background:#e9e7e1; }
-    .care-card h3 { margin:10px 0 20px; font-size:23px; font-weight:500; }
-    .care-card p { margin:0; color:#4e5c64; font:14px/1.85 "Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .weather-mark { margin:4px 0 19px; font-size:49px; line-height:1; color:var(--red); letter-spacing:.03em; }
-    .weather-mark small { font:12px/1.3 "Noto Sans SC","Microsoft YaHei",sans-serif; color:#727676; letter-spacing:.05em; }
-    .care-card ul { list-style:none; padding:0; margin:0; }
-    .care-card li { padding:8px 0; border-bottom:1px solid rgba(19,40,59,.13); color:#4e5c64; font:13px/1.6 "Noto Sans SC","Microsoft YaHei",sans-serif; }
-    .care-card li:last-child { border:0; }
-    .care-card li:before { content:"✓"; color:var(--red); font-weight:700; margin-right:9px; }
-    @media(max-width:760px) { .care { padding-top:58px; } .care-head { display:block; } .care-head p { margin-top:13px; } .care-grid { grid-template-columns:1fr; } .care-card { min-height:auto; } }</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="2026年11月14日至23日北京十日漫游行程：每日安排、天气准备、订票清单与北京味道。">
+<meta name="theme-color" content="#F7F2E8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1720" media="(prefers-color-scheme: dark)">
+<title>北京秋日漫游｜十日旅行计划</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500&family=Noto+Serif+SC:wght@400;600&display=swap">
+<style>
+:root{
+  --paper:#F7F2E8; --card:#FFFDF8; --ink:#1A2732; --muted:#54606C;
+  --accent:#9E2B20; --label:#7A5312; --rule:#DCD2BF; --control:#8C8172;
+  --deep:#12202B; --on-deep:#F2EDE2; --deep-muted:#B9C2C9;
+  --serif:"Noto Serif SC","Songti SC","STSong",Georgia,serif;
+  --sans:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --sp-1:8px; --sp-2:16px; --sp-3:24px; --sp-4:32px; --sp-5:48px; --sp-6:64px; --sp-7:96px;
+  --measure:68ch; --shell:1240px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0F1720; --card:#16212C; --ink:#E9E3D7; --muted:#A6B0BB;
+    --accent:#E8887A; --label:#D9B26A; --rule:#2C3A47; --control:#7C8894;
+    --deep:#0A121A; --on-deep:#E9E3D7; --deep-muted:#A6B0BB;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.75 var(--sans);
+  font-feature-settings:"palt";overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+p{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:-9999px;top:0;z-index:99;background:var(--accent);color:#fff;
+  padding:12px 20px;font:500 15px/1 var(--sans)}
+.skip:focus{left:8px;top:8px}
+.shell{width:min(100% - 40px,var(--shell));margin-inline:auto}
+.eyebrow{font:500 12px/1 var(--sans);letter-spacing:.18em;color:var(--label);
+  text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor;flex:none}
+
+/* masthead */
+.masthead{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.masthead .shell{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2)}
+.wordmark{font:600 15px/1 var(--serif);letter-spacing:.08em;padding:16px 0;white-space:nowrap}
+.mast-nav{display:flex;gap:4px;justify-content:flex-end;flex-wrap:nowrap}
+.mast-nav a{font:400 14px/1 var(--sans);color:var(--muted);padding:15px 12px;min-height:44px;
+  display:inline-flex;align-items:center;white-space:nowrap;transition:color .2s}
+.mast-nav a:hover{color:var(--accent)}
+@media(max-width:640px){
+  .masthead .shell{display:grid;grid-template-columns:1fr;gap:0}
+  .wordmark{font-size:14px;padding:12px 0 6px}
+  .mast-nav{justify-content:flex-start;overflow-x:auto;scrollbar-width:none;
+    margin-inline:-20px;padding-inline:20px 8px}
+  .mast-nav::-webkit-scrollbar{display:none}
+  .mast-nav a{padding:10px 14px 12px 0;min-height:40px;font-size:13.5px}
+}
+
+/* hero */
+.hero{position:relative;isolation:isolate;background:var(--deep);color:var(--on-deep);
+  display:grid;align-items:end;min-height:clamp(460px,72vh,720px);overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(96deg,rgba(9,17,25,.93) 0%,rgba(9,17,25,.72) 46%,rgba(9,17,25,.34) 100%)}
+.hero-inner{padding-block:var(--sp-6) var(--sp-5)}
+.hero .eyebrow{color:#EFCB8E}
+.hero h1{font-size:clamp(42px,8vw,86px);line-height:1.08;letter-spacing:.04em;
+  margin:var(--sp-3) 0 var(--sp-2);max-width:14ch}
+.hero .hero-lede{max-width:46ch;color:#DEE5EA;font-size:clamp(15px,1.6vw,17px);line-height:1.9}
+.trip-chip{margin-top:var(--sp-4);display:inline-flex;flex-wrap:wrap;align-items:center;gap:6px 14px;
+  border:1px solid rgba(255,255,255,.42);padding:12px 18px;font:400 14px/1.5 var(--sans);
+  background:rgba(255,255,255,.08)}
+.trip-chip b{color:#F2D79E;font-weight:500;letter-spacing:.06em;white-space:nowrap}
+
+/* section furniture */
+.band{padding-block:var(--sp-7)}
+.band-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:var(--sp-5);
+  align-items:end;margin-bottom:var(--sp-5)}
+.band-head h2{font-size:clamp(28px,4.2vw,46px);line-height:1.28;letter-spacing:.02em;margin-top:var(--sp-2)}
+.band-head .lede{color:var(--muted);font-size:15px;line-height:1.9;max-width:44ch}
+@media(max-width:860px){.band-head{grid-template-columns:1fr;gap:var(--sp-3)}}
+
+/* overview */
+.overview{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:var(--sp-6);
+  padding-block:var(--sp-7) var(--sp-5)}
+.overview-copy{font-size:17px;line-height:2;color:var(--ink);max-width:var(--measure)}
+.overview-copy::first-letter{float:left;font-family:var(--serif);font-size:4.2em;line-height:.86;
+  font-weight:600;color:var(--accent);padding:6px 12px 0 0}
+@media(max-width:860px){.overview{grid-template-columns:1fr;gap:var(--sp-4)}}
+
+/* flights */
+.flights{display:grid;grid-template-columns:1fr auto 1fr;gap:var(--sp-3);align-items:center;
+  background:var(--deep);color:var(--on-deep);padding:var(--sp-4) var(--sp-5)}
+.flights .label{font:500 11px/1 var(--sans);letter-spacing:.16em;color:#E5BD77;text-transform:uppercase}
+.flights strong{display:block;font:600 20px/1.45 var(--serif);margin:10px 0 4px;letter-spacing:.02em}
+.flights small{font:400 13px/1.6 var(--sans);color:var(--deep-muted)}
+.flights .swap{color:#E5BD77;flex:none}
+@media(max-width:720px){.flights{grid-template-columns:1fr;text-align:left;padding:var(--sp-3)}
+  .flights .swap{transform:rotate(90deg);margin-inline:auto}}
+
+/* itinerary */
+.rail{display:flex;gap:6px;overflow-x:auto;padding-bottom:var(--sp-2);margin-bottom:var(--sp-5);
+  border-bottom:1px solid var(--rule);scrollbar-width:thin}
+.rail-day{flex:none;display:grid;gap:2px;padding:10px 14px;min-height:44px;border:1px solid var(--control);
+  transition:background .2s,color .2s,border-color .2s}
+.rail-day:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.rail-num{font:500 11px/1 var(--sans);letter-spacing:.12em;color:var(--label)}
+.rail-day:hover .rail-num{color:#fff}
+.rail-date{font:400 13px/1.2 var(--sans);white-space:nowrap}
+.timeline{display:grid;gap:var(--sp-6)}
+.day{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(0,.92fr);gap:var(--sp-4);
+  align-items:start;padding-top:var(--sp-5);border-top:1px solid var(--rule);scroll-margin-top:88px}
+.day:first-child{border-top:0;padding-top:0}
+.day-index{font:600 13px/1 var(--sans);letter-spacing:.12em;color:var(--accent);padding-top:6px}
+.day-meta{font:400 13px/1 var(--sans);color:var(--muted);display:flex;align-items:center;gap:10px}
+.dot{width:3px;height:3px;border-radius:50%;background:currentColor;display:inline-block}
+.day-title{font-size:clamp(23px,2.9vw,31px);line-height:1.35;letter-spacing:.02em;margin:12px 0 14px}
+.day-body{color:var(--muted);font-size:15.5px;line-height:1.95;max-width:46ch}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--sp-3)}
+.tag{font:400 12.5px/1 var(--sans);white-space:nowrap;padding:8px 12px;border:1px solid var(--rule);
+  color:var(--muted);background:var(--card);max-width:100%;overflow-wrap:anywhere}
+.day-figure{margin:0;aspect-ratio:16/9;overflow:hidden;background:var(--rule)}
+.day-figure img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.day:hover .day-figure img{transform:scale(1.03)}
+@media(max-width:900px){.day{grid-template-columns:auto minmax(0,1fr)}
+  .day-figure{grid-column:1/-1;order:-1}}
+
+/* pullquote */
+.pullquote{border-block:1px solid var(--rule);padding-block:var(--sp-6);margin:0;text-align:center}
+.pullquote p{font:600 clamp(22px,3.4vw,36px)/1.55 var(--serif);letter-spacing:.03em;
+  max-width:22ch;margin-inline:auto;text-wrap:balance}
+.pullquote cite{display:block;margin-top:var(--sp-3);font:400 13px/1 var(--sans);
+  color:var(--label);letter-spacing:.14em;font-style:normal;text-transform:uppercase}
+
+/* cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--sp-3)}
+.card{background:var(--card);border:1px solid var(--rule);padding:var(--sp-4)}
+.card h3{font-size:22px;line-height:1.4;margin:12px 0 var(--sp-3);letter-spacing:.02em}
+.card li{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);
+  color:var(--muted);font-size:14.5px;line-height:1.8}
+.card li:last-child{border-bottom:0;padding-bottom:0}
+.tick{flex:none;margin-top:5px;color:var(--accent)}
+
+/* food */
+.food{background:var(--deep);color:var(--on-deep)}
+.food .eyebrow{color:#EFCB8E}
+.food h2{font-size:clamp(28px,4.2vw,46px);line-height:1.28;margin-top:var(--sp-2);letter-spacing:.02em}
+.food .lede{color:var(--deep-muted);font-size:15px;line-height:1.95;max-width:44ch;margin-top:var(--sp-3)}
+.food-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:var(--sp-6);align-items:start}
+.food-items{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.16)}
+.food-item{background:var(--deep);padding:var(--sp-3)}
+.food-item b{display:block;font:600 17px/1.5 var(--serif);letter-spacing:.03em;margin-bottom:8px}
+.food-item span{color:var(--deep-muted);font-size:13.5px;line-height:1.8}
+@media(max-width:860px){.food-grid{grid-template-columns:1fr;gap:var(--sp-4)}}
+@media(max-width:480px){.food-items{grid-template-columns:1fr}}
+
+/* weather */
+.weather{background:var(--card);border:1px solid var(--rule);padding:var(--sp-4)}
+.weather p{color:var(--muted);font-size:14.5px;line-height:1.9}
+.weather p.temp{font:600 46px/1.1 var(--serif);color:var(--accent);letter-spacing:.02em;
+  margin:var(--sp-3) 0 6px;font-variant-numeric:tabular-nums}
+.weather p.temp small{font:400 13px/1 var(--sans);color:var(--muted);letter-spacing:.04em}
+.weather p.temp-night{font:600 27px/1.2 var(--serif);color:var(--ink);
+  font-variant-numeric:tabular-nums;margin-bottom:var(--sp-3)}
+
+/* footer */
+.footer{border-top:1px solid var(--rule);padding-block:var(--sp-5);display:flex;flex-wrap:wrap;
+  gap:var(--sp-3);align-items:center;justify-content:space-between}
+.footer p.seal{font:600 13px/1 var(--sans);letter-spacing:.2em;color:var(--accent);margin-bottom:12px}
+.footer p{color:var(--muted);font-size:13.5px;line-height:1.85}
+.to-top{font:400 14px/1 var(--sans);color:var(--accent);display:inline-flex;align-items:center;
+  gap:8px;padding:12px 4px;min-height:44px}
+
+/* readable-font-size: keep reading copy >=16px on phones */
+@media(max-width:640px){
+  .day-body{font-size:16px}
+  .card li{font-size:15.5px}
+  .band-head .lede,.food .lede{font-size:16px}
+  .weather p{font-size:15.5px}
+  .food-item span{font-size:14.5px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important}
+  .day:hover .day-figure img{transform:none}
+}
+@media print{
+  .masthead,.rail,.to-top,.skip{display:none}
+  body{background:#fff;color:#000;font-size:11pt}
+  .day{break-inside:avoid;page-break-inside:avoid}
+  .hero{min-height:auto}
+}
+</style>
 </head>
 <body>
-  <header class="hero" id="top">
-    <nav><a class="brand" href="#top">北京 · 秋日漫游</a><div class="nav-links"><a href="#itinerary">每日行程</a><a href="#care">天气与准备</a><a href="#food">北京味道</a></div></nav>
+<a class="skip" href="#main">跳到主要内容</a>
+
+<header class="masthead">
+  <div class="shell">
+    <a class="wordmark" href="#top">北京 · 秋日漫游</a>
+    <nav class="mast-nav" aria-label="主导航">
+      <a href="#itinerary">每日行程</a>
+      <a href="#notes">订票与准备</a>
+      <a href="#food">北京味道</a>
+      <a href="#care">天气</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-img" src="assets/webp/hero-1920.webp"
+       srcset="assets/webp/hero-960.webp 960w, assets/webp/hero-1920.webp 1920w"
+       sizes="100vw" width="1920" height="821" fetchpriority="high" decoding="async"
+       alt="北京秋日的城楼与树影">
+  <div class="shell hero-inner">
+    <p class="eyebrow">Beijing · November 2026</p>
+    <h1>十日北京，慢慢看</h1>
+    <p class="hero-lede">从城墙晨光到胡同热气，在初冬到来前走进皇城、园林与老北京的日常。</p>
+    <p class="trip-chip"><b>11.14 — 11.23</b><span>新加坡 · 北京大兴 · 新加坡</span></p>
+  </div>
+</section>
+
+<main id="main">
+  <div class="shell">
+
+    <section class="overview" aria-labelledby="ov-h">
+      <div>
+        <p class="eyebrow">01 / 旅行概览</p>
+        <h2 id="ov-h" style="font-size:clamp(28px,4.2vw,46px);line-height:1.28;margin-top:var(--sp-2);letter-spacing:.02em">留给历史，也留给一碗热气腾腾的面。</h2>
+      </div>
+      <p class="overview-copy">这是一段安排得恰到好处的初访北京之旅：经典景点在上午的好光线里完成，午后留给散步、甜点与意外的停留。11月干冷多风，行程将室外与室内体验交替安排。</p>
+    </section>
+
+    <section class="flights" aria-label="航班信息">
+      <div>
+        <p class="label">抵达 · 11月14日</p>
+        <strong>新加坡 SIN → 北京 PKX</strong>
+        <small>00:55 起飞 · 07:10 抵达</small>
+      </div>
+      <svg class="swap" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>
+      <div>
+        <p class="label">返程 · 11月23日</p>
+        <strong>北京 PKX → 新加坡 SIN</strong>
+        <small>17:05 起飞 · 23:40 抵达</small>
+      </div>
+    </section>
+
+    <section class="band" id="itinerary" aria-labelledby="it-h">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">02 / 每日行程</p>
+          <h2 id="it-h">一日一页北京</h2>
+        </div>
+        <p class="lede">十天的节奏与重点，按日排列。选一个日期直接跳转，或往下慢慢读。</p>
+      </div>
+      <nav class="rail" aria-label="按日期跳转">
+          <a class="rail-day" href="#day-1"><span class="rail-num">01</span><span class="rail-date">11.14</span></a>
+          <a class="rail-day" href="#day-2"><span class="rail-num">02</span><span class="rail-date">11.15</span></a>
+          <a class="rail-day" href="#day-3"><span class="rail-num">03</span><span class="rail-date">11.16</span></a>
+          <a class="rail-day" href="#day-4"><span class="rail-num">04</span><span class="rail-date">11.17</span></a>
+          <a class="rail-day" href="#day-5"><span class="rail-num">05</span><span class="rail-date">11.18</span></a>
+          <a class="rail-day" href="#day-6"><span class="rail-num">06</span><span class="rail-date">11.19</span></a>
+          <a class="rail-day" href="#day-7"><span class="rail-num">07</span><span class="rail-date">11.20</span></a>
+          <a class="rail-day" href="#day-8"><span class="rail-num">08</span><span class="rail-date">11.21</span></a>
+          <a class="rail-day" href="#day-9"><span class="rail-num">09</span><span class="rail-date">11.22</span></a>
+          <a class="rail-day" href="#day-10"><span class="rail-num">10</span><span class="rail-date">11.23</span></a>      </nav>
+      <ol class="timeline">
+        <li class="day" id="day-1">
+          <div class="day-index" aria-hidden="true">01</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-14">11.14</time><span class="dot" aria-hidden="true"></span>周六</p>
+            <h3 class="day-title">抵达北京</h3>
+            <p class="day-body">大兴机场抵达后前往酒店寄存行李。安排一顿热早餐、附近短暂散步与充分休息，傍晚再办理入住。</p>
+            <ul class="tags"><li class="tag">轻松起步</li><li class="tag">酒店附近</li><li class="tag">早睡</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day01-arrival-1200.webp"
+                 srcset="assets/webp/day01-arrival-600.webp 600w, assets/webp/day01-arrival-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 1 天：抵达北京">
+          </figure>
+        </li>
+        <li class="day" id="day-2">
+          <div class="day-index" aria-hidden="true">02</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-15">11.15</time><span class="dot" aria-hidden="true"></span>周日</p>
+            <h3 class="day-title">天坛与前门</h3>
+            <p class="day-body">上午参观天坛：祈年殿、回音壁与圜丘。午后在前门和周边小巷慢慢逛，晚上安排烤鸭。</p>
+            <ul class="tags"><li class="tag">天坛公园</li><li class="tag">前门大街</li><li class="tag">北京烤鸭</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day02-temple-1200.webp"
+                 srcset="assets/webp/day02-temple-600.webp 600w, assets/webp/day02-temple-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 2 天：天坛与前门">
+          </figure>
+        </li>
+        <li class="day" id="day-3">
+          <div class="day-index" aria-hidden="true">03</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-16">11.16</time><span class="dot" aria-hidden="true"></span>周一</p>
+            <h3 class="day-title">八达岭长城</h3>
+            <p class="day-body">早出发前往八达岭长城。选择体力舒适的步行段；需要时可使用缆车。下午回城后不再安排紧凑活动。</p>
+            <ul class="tags"><li class="tag">八达岭</li><li class="tag">保暖防风</li><li class="tag">热汤晚餐</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day03-great-wall-1200.webp"
+                 srcset="assets/webp/day03-great-wall-600.webp 600w, assets/webp/day03-great-wall-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 3 天：八达岭长城">
+          </figure>
+        </li>
+        <li class="day" id="day-4">
+          <div class="day-index" aria-hidden="true">04</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-17">11.17</time><span class="dot" aria-hidden="true"></span>周二</p>
+            <h3 class="day-title">故宫与景山</h3>
+            <p class="day-body">上午进入故宫，按中轴线游览并为宫殿细节留出时间。午后登景山，俯瞰紫禁城全景。</p>
+            <ul class="tags"><li class="tag">故宫博物院</li><li class="tag">景山公园</li><li class="tag">预约优先</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day04-forbidden-city-1200.webp"
+                 srcset="assets/webp/day04-forbidden-city-600.webp 600w, assets/webp/day04-forbidden-city-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 4 天：故宫与景山">
+          </figure>
+        </li>
+        <li class="day" id="day-5">
+          <div class="day-index" aria-hidden="true">05</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-18">11.18</time><span class="dot" aria-hidden="true"></span>周三</p>
+            <h3 class="day-title">颐和园</h3>
+            <p class="day-body">从东宫门进入颐和园，走长廊、昆明湖与重点宫苑。傍晚可视体力到鸟巢、水立方外观拍照。</p>
+            <ul class="tags"><li class="tag">颐和园</li><li class="tag">长廊</li><li class="tag">皇家园林</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day05-summer-palace-1200.webp"
+                 srcset="assets/webp/day05-summer-palace-600.webp 600w, assets/webp/day05-summer-palace-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 5 天：颐和园">
+          </figure>
+        </li>
+        <li class="day" id="day-6">
+          <div class="day-index" aria-hidden="true">06</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-19">11.19</time><span class="dot" aria-hidden="true"></span>周四</p>
+            <h3 class="day-title">雍和宫与胡同</h3>
+            <p class="day-body">上午雍和宫，随后走国子监街与五道营胡同。下午给咖啡、买手店和意外停留留出空白。</p>
+            <ul class="tags"><li class="tag">雍和宫</li><li class="tag">国子监街</li><li class="tag">五道营</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day06-hutong-1200.webp"
+                 srcset="assets/webp/day06-hutong-600.webp 600w, assets/webp/day06-hutong-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 6 天：雍和宫与胡同">
+          </figure>
+        </li>
+        <li class="day" id="day-7">
+          <div class="day-index" aria-hidden="true">07</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-20">11.20</time><span class="dot" aria-hidden="true"></span>周五</p>
+            <h3 class="day-title">天安门与国博</h3>
+            <p class="day-body">按预约时段进入天安门广场；国家博物馆只挑重点展厅，不赶全馆。傍晚可去王府井一带。</p>
+            <ul class="tags"><li class="tag">天安门广场</li><li class="tag">国家博物馆</li><li class="tag">室内日</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day07-national-museum-1200.webp"
+                 srcset="assets/webp/day07-national-museum-600.webp 600w, assets/webp/day07-national-museum-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 7 天：天安门与国博">
+          </figure>
+        </li>
+        <li class="day" id="day-8">
+          <div class="day-index" aria-hidden="true">08</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-21">11.21</time><span class="dot" aria-hidden="true"></span>周六</p>
+            <h3 class="day-title">鼓楼与什刹海</h3>
+            <p class="day-body">由鼓楼出发，沿什刹海与周边胡同散步。午后前往牛街，完成一场小吃巡礼。</p>
+            <ul class="tags"><li class="tag">鼓楼</li><li class="tag">什刹海</li><li class="tag">牛街美食</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day08-shichahai-1200.webp"
+                 srcset="assets/webp/day08-shichahai-600.webp 600w, assets/webp/day08-shichahai-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 8 天：鼓楼与什刹海">
+          </figure>
+        </li>
+        <li class="day" id="day-9">
+          <div class="day-index" aria-hidden="true">09</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-22">11.22</time><span class="dot" aria-hidden="true"></span>周日</p>
+            <h3 class="day-title">圆明园或备选日</h3>
+            <p class="day-body">可游圆明园，或作为长城天气备选日。若喜欢主题乐园，也可将全天改为环球度假区。</p>
+            <ul class="tags"><li class="tag">圆明园</li><li class="tag">弹性安排</li><li class="tag">告别晚餐</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day09-yuanmingyuan-1200.webp"
+                 srcset="assets/webp/day09-yuanmingyuan-600.webp 600w, assets/webp/day09-yuanmingyuan-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 9 天：圆明园或备选日">
+          </figure>
+        </li>
+        <li class="day" id="day-10">
+          <div class="day-index" aria-hidden="true">10</div>
+          <div class="day-text">
+            <p class="day-meta"><time datetime="2026-11-23">11.23</time><span class="dot" aria-hidden="true"></span>周一</p>
+            <h3 class="day-title">返程日</h3>
+            <p class="day-body">早餐后收拾行李并退房。建议中午前后离开酒店，约14:00前抵达北京大兴机场。</p>
+            <ul class="tags"><li class="tag">酒店退房</li><li class="tag">北京大兴机场</li><li class="tag">17:05 起飞</li></ul>
+          </div>
+          <figure class="day-figure">
+            <img src="assets/webp/day10-departure-1200.webp"
+                 srcset="assets/webp/day10-departure-600.webp 600w, assets/webp/day10-departure-1200.webp 1200w"
+                 sizes="(max-width: 900px) 100vw, 46vw"
+                 width="1200" height="675" loading="lazy" decoding="async"
+                 alt="第 10 天：返程日">
+          </figure>
+        </li>      </ol>
+    </section>
+
+    <blockquote class="pullquote">
+      <p>把上午交给古迹，把下午交给偶然。</p>
+      <cite>行程原则</cite>
+    </blockquote>
+
+    <section class="band" id="notes" aria-labelledby="pr-h">
+      <div class="band-head">
+        <div>
+          <p class="eyebrow">03 / 出发之前</p>
+          <h2 id="pr-h">先锁定，再出发</h2>
+        </div>
+        <p class="lede">预约名额与保暖装备是这趟行程里最容易被低估的两件事。</p>
+      </div>
+      <div class="card-grid">
+        <article class="card">
+          <p class="eyebrow">订票清单</p>
+          <h3>需要提前预约</h3>
+          <ul>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>故宫博物院：通常提前七天放票；11月周一闭馆。</span></li>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>国家博物馆：提前预约，通常周一闭馆。</span></li>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>八达岭长城：建议提前订票，并预留天气备选日。</span></li>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>天安门广场：按当期规则预约入场时段。</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <p class="eyebrow">行前准备</p>
+          <h3>11月的北京</h3>
+          <ul>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>昼夜温差明显：羽绒或厚外套、围巾与手套很实用。</span></li>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>长城风大：选择防风层与抓地好的鞋。</span></li>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>机场返程：建议起飞前三小时抵达北京大兴机场。</span></li>
+            <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>抵达当天先寄存行李；早晨入住房间需向酒店确认。</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<section class="food band" id="food" aria-labelledby="fd-h">
+  <div class="shell food-grid">
     <div>
-      <div class="eyebrow">BEIJING · NOVEMBER 2026</div>
-      <h1>十日北京<br>慢慢看</h1>
-      <p>从城墙晨光到胡同热气，在初冬到来前走进皇城、园林与老北京的日常。</p>
-      <div class="trip-chip"><b>11.14 — 11.23</b><span>新加坡 · 北京大兴 · 新加坡</span></div>
+      <p class="eyebrow">04 / 北京味道</p>
+      <h2 id="fd-h">在胡同和街巷里好好吃一顿</h2>
+      <p class="lede">行程参考小红书指南，将小吃放在牛街与鼓楼一带，把正餐留给烤鸭、铜锅或一碗牛肉面。店铺分店与营业时间请出发前再次确认。</p>
     </div>
-  </header>
-  <main>
-    <section class="intro" aria-label="行程概览">
-      <div><div class="chapter">01 / 旅行概览</div><h2>留给历史，也留给<br>一碗热气腾腾的面。</h2></div>
-      <p class="intro-copy">这是一段安排得恰到好处的初访北京之旅：经典景点在上午的好光线里完成，午后留给散步、甜点与意外的停留。11月干冷多风，行程将室外与室内体验交替安排。</p>
-    </section>
-    <section class="flight" aria-label="航班信息"><div><div class="label">抵达 · 11月14日</div><strong>新加坡 SIN → 北京 PKX</strong><small>00:55 起飞 · 07:10 抵达</small></div><div class="arrow">→</div><div><div class="label">返程 · 11月23日</div><strong>北京 PKX → 新加坡 SIN</strong><small>17:05 起飞 · 23:40 抵达</small></div></section>
-    <section class="schedule" id="itinerary">
-      <div class="section-head"><div><div class="chapter">02 / 每日行程</div><h2>一日一页北京</h2></div><p>点击日期，查看当日节奏与重点。</p></div>
-      <div class="days" id="dayTabs"></div><article class="plan" id="plan" aria-live="polite"></article>
-    </section>
-    <section class="two-col" id="notes"><div class="card"><div class="chapter">03 / 订票清单</div><h3>出发前先锁定</h3><ul><li>故宫博物院：通常提前七天放票；11月周一闭馆。</li><li>国家博物馆：提前预约，通常周一闭馆。</li><li>八达岭长城：建议提前订票，并预留天气备选日。</li><li>天安门广场：按当期规则预约入场时段。</li></ul></div><div class="card"><div class="chapter">04 / 行前准备</div><h3>11月的北京</h3><ul><li>昼夜温差明显：羽绒或厚外套、围巾与手套很实用。</li><li>长城风大：选择防风层与抓地好的鞋。</li><li>机场返程：建议起飞前三小时抵达北京大兴机场。</li><li>抵达当天先寄存行李；早晨入住房间需向酒店确认。</li></ul></div></section>
-  </main>
-  <section class="food" id="food"><div class="food-grid"><div><div class="chapter" style="color:#f1d6a5">05 / 北京味道</div><h2>在胡同和街巷里<br>好好吃一顿</h2><p>行程参考小红书指南，将小吃放在牛街与鼓楼一带，把正餐留给烤鸭、铜锅或一碗牛肉面。店铺分店与营业时间请出发前再次确认。</p></div><div class="food-items"><div class="food-item"><b>门钉肉饼</b><span>外焦里嫩，适合当作胡同漫步的加餐。</span></div><div class="food-item"><b>紫光园酸奶</b><span>老北京甜品，冰凉浓厚，适合午后休息。</span></div><div class="food-item"><b>牛街小吃</b><span>糖火烧、炸糕与清真点心，少量多尝。</span></div><div class="food-item"><b>王记牛肉面</b><span>长城或博物馆日后，一碗热汤最妥帖。</span></div></div></div></section>
-  <section class="care" id="care">
-    <div class="care-head"><div><div class="chapter">06 / 天气与注意事项</div><h2>把冷风挡在外面</h2></div><p>季节性参考 · 具体天气请在出发前 3–5 天确认</p></div>
-    <div class="care-grid">
-      <article class="care-card"><div class="chapter">北京 · 11月</div><div class="weather-mark">5–12° <small>白天约</small><br><span style="font-size:29px">−3–3°</span> <small>夜间可能</small></div><p>体感冷、干、多风；中旬后更接近冬天。长城和景山风力更明显，建议把户外安排在日照较好的中午前后。</p></article>
-      <article class="care-card"><div class="chapter">带什么</div><h3>行李清单</h3><ul><li>保暖内层、毛衣或抓绒、轻薄羽绒与防风外套</li><li>围巾、帽子、手套；长城日可带暖宝宝</li><li>防滑舒适的步行鞋，最好准备厚袜子</li><li>润唇膏、护手霜、保湿乳与口罩</li><li>充电宝、护照、预约凭证与少量现金</li></ul></article>
-      <article class="care-card"><div class="chapter">出发前</div><h3>三件要紧事</h3><ul><li>故宫、国博等预约名额按开放规则提前锁定</li><li>每天出门前看风力与空气质量，长城日留备选日期</li><li>室内暖、室外冷，穿可增减的分层衣物</li><li>返程日建议 14:00 前抵达北京大兴机场</li><li>用 Alipay 或 WeChat Pay 准备交通与小额消费</li></ul></article>
+    <div class="food-items">
+      <div class="food-item"><b>门钉肉饼</b><span>外焦里嫩，适合当作胡同漫步的加餐。</span></div>
+      <div class="food-item"><b>紫光园酸奶</b><span>老北京甜品，冰凉浓厚，适合午后休息。</span></div>
+      <div class="food-item"><b>牛街小吃</b><span>糖火烧、炸糕与清真点心，少量多尝。</span></div>
+      <div class="food-item"><b>王记牛肉面</b><span>长城或博物馆日后，一碗热汤最妥帖。</span></div>
     </div>
-  </section>  <main><footer class="footer"><div><div class="seal">BEIJING 2026</div><p>为 11 月 14 日至 23 日的北京行程制作<br>住宿：京尚酒店 · 9 晚</p></div><a class="sans" href="#top" style="font-size:13px;color:var(--red)">回到页首 ↑</a></footer></main>
-  <script>
-    const days=[
-      ['11.14 周六','抵达北京','大兴机场抵达后前往酒店寄存行李。安排一顿热早餐、附近短暂散步与充分休息，傍晚再办理入住。','轻松起步','酒店附近','早睡'],
-      ['11.15 周日','天坛与前门','上午参观天坛：祈年殿、回音壁与圜丘。午后在前门和周边小巷慢慢逛，晚上安排烤鸭。','天坛公园','前门大街','北京烤鸭'],
-      ['11.16 周一','八达岭长城','早出发前往八达岭长城。选择体力舒适的步行段；需要时可使用缆车。下午回城后不再安排紧凑活动。','八达岭','保暖防风','热汤晚餐'],
-      ['11.17 周二','故宫与景山','上午进入故宫，按中轴线游览并为宫殿细节留出时间。午后登景山，俯瞰紫禁城全景。','故宫博物院','景山公园','预约优先'],
-      ['11.18 周三','颐和园','从东宫门进入颐和园，走长廊、昆明湖与重点宫苑。傍晚可视体力到鸟巢、水立方外观拍照。','颐和园','长廊','皇家园林'],
-      ['11.19 周四','雍和宫与胡同','上午雍和宫，随后走国子监街与五道营胡同。下午给咖啡、买手店和意外停留留出空白。','雍和宫','国子监街','五道营'],
-      ['11.20 周五','天安门与国博','按预约时段进入天安门广场；国家博物馆只挑重点展厅，不赶全馆。傍晚可去王府井一带。','天安门广场','国家博物馆','室内日'],
-      ['11.21 周六','鼓楼与什刹海','由鼓楼出发，沿什刹海与周边胡同散步。午后前往牛街，完成一场小吃巡礼。','鼓楼','什刹海','牛街美食'],
-      ['11.22 周日','圆明园或备选日','可游圆明园，或作为长城天气备选日。若喜欢主题乐园，也可将全天改为环球度假区。','圆明园','弹性安排','告别晚餐'],
-      ['11.23 周一','返程日','早餐后收拾行李并退房。建议中午前后离开酒店，约14:00前抵达北京大兴机场。','酒店退房','北京大兴机场','17:05 起飞']
-    ];
-    const dayImages=['day01-arrival.png','day02-temple.png','day03-great-wall.png','day04-forbidden-city.png','day05-summer-palace.png','day06-hutong.png','day07-national-museum.png','day08-shichahai.png','day09-yuanmingyuan.png','day10-departure.png']; const tabs=document.getElementById('dayTabs'), plan=document.getElementById('plan');
-    function render(i){const d=days[i]; document.querySelectorAll('.day').forEach((el,n)=>el.classList.toggle('active',n===i)); plan.innerHTML=`<div class="date">${d[0]}</div><div class="plan-body"><h3 class="plan-title">${d[1]}</h3><p>${d[2]}</p><div class="tags">${d.slice(3).map(x=>`<span class="tag">${x}</span>`).join('')}</div></div><img class="plan-image" src="assets/${dayImages[i]}" alt="${d[1]}的北京旅行风景">`;}
-    days.forEach((d,i)=>{let b=document.createElement('button');b.className='day'+(i===0?' active':'');b.innerHTML=`<span>${d[0]}</span><b>第 ${i+1} 天</b>`;b.onclick=()=>render(i);tabs.appendChild(b)});render(0);
-  </script>
+  </div>
+</section>
+
+<section class="band" id="care" aria-labelledby="ca-h">
+  <div class="shell">
+    <div class="band-head">
+      <div>
+        <p class="eyebrow">05 / 天气与注意事项</p>
+        <h2 id="ca-h">把冷风挡在外面</h2>
+      </div>
+      <p class="lede">季节性参考 · 具体天气请在出发前 3–5 天确认</p>
+    </div>
+    <div class="card-grid">
+      <article class="weather">
+        <p class="eyebrow">北京 · 11月</p>
+        <p class="temp">5–12° <small>白天约</small></p>
+        <p class="temp-night">−3–3° <small style="font:400 13px/1 var(--sans);color:var(--muted)">夜间可能</small></p>
+        <p>体感冷、干、多风；中旬后更接近冬天。长城和景山风力更明显，建议把户外安排在日照较好的中午前后。</p>
+      </article>
+      <article class="card">
+        <p class="eyebrow">带什么</p>
+        <h3>行李清单</h3>
+        <ul>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>保暖内层、毛衣或抓绒、轻薄羽绒与防风外套</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>围巾、帽子、手套；长城日可带暖宝宝</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>防滑舒适的步行鞋，最好准备厚袜子</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>润唇膏、护手霜、保湿乳与口罩</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>充电宝、护照、预约凭证与少量现金</span></li>
+        </ul>
+      </article>
+      <article class="card">
+        <p class="eyebrow">出发前</p>
+        <h3>几件要紧事</h3>
+        <ul>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>故宫、国博等预约名额按开放规则提前锁定</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>每天出门前看风力与空气质量，长城日留备选日期</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>室内暖、室外冷，穿可增减的分层衣物</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>返程日建议 14:00 前抵达北京大兴机场</span></li>
+          <li><svg class="tick" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg><span>用 Alipay 或 WeChat Pay 准备交通与小额消费</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="shell footer">
+  <div>
+    <p class="seal">BEIJING 2026</p>
+    <p>为 11 月 14 日至 23 日的北京行程制作<br>住宿：京尚酒店 · 9 晚</p>
+  </div>
+  <a class="to-top" href="#top">回到页首
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </a>
+</footer>
 </body>
 </html>
